@@ -1,298 +1,307 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Muhammed Sahal | Data Analyst</title>
-
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Muhammed Sahal C · Data Portfolio</title>
+<meta name="description" content="Data analyst portfolio of Muhammed Sahal C: Power BI, SQL and Excel projects in e-commerce, retail and HR analytics.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
 <style>
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Poppins', sans-serif;
+/* Layout: one reading column; each project is a "case file" — question, dashboard, what I did, findings ledger. */
+:root{
+  --bg:#F5F7FA; --surface:#FFFFFF; --ink:#132033; --muted:#566377; --line:#DCE2EA;
+  --accent:#0F766E; --accent-soft:#E2F2EF; --signal:#C2410C; --chip:#EEF1F5;
+  --display:"Bricolage Grotesque", "Segoe UI", system-ui, sans-serif;
+  --body:"IBM Plex Sans", "Segoe UI", system-ui, sans-serif;
+  --mono:"IBM Plex Mono", ui-monospace, Consolas, monospace;
+  color-scheme:light;
 }
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#0E1520; --surface:#151F2D; --ink:#E7ECF3; --muted:#9AA7B8; --line:#263344;
+  --accent:#3CC2AE; --accent-soft:#163533; --signal:#FB8A5A; --chip:#1C2838; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0E1520; --surface:#151F2D; --ink:#E7ECF3; --muted:#9AA7B8; --line:#263344;
+  --accent:#3CC2AE; --accent-soft:#163533; --signal:#FB8A5A; --chip:#1C2838; color-scheme:dark}
 
-html {
-    scroll-behavior: smooth;
-}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.6;padding-inline:20px}
+.wrap{max-width:980px;margin:0 auto;padding-block:40px 64px;display:grid;gap:72px}
+a{color:var(--accent);text-underline-offset:3px}
+a:focus-visible,button:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:4px}
+h1,h2,h3{font-family:var(--display);line-height:1.1;text-wrap:balance;margin:0}
+p{margin:0}
+.label{font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
 
-body {
-    background: linear-gradient(270deg, #020617, #0f172a, #020617);
-    background-size: 600% 600%;
-    animation: gradientMove 15s ease infinite;
-    color: #e2e8f0;
-}
+/* header */
+header{display:grid;gap:22px}
+.topline{display:flex;flex-wrap:wrap;gap:10px 18px;align-items:center;justify-content:space-between}
+.status{display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:500;background:var(--accent-soft);color:var(--accent);padding:6px 12px;border-radius:999px}
+.status::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--accent)}
+h1{font-size:clamp(40px,7vw,68px);font-weight:800;letter-spacing:-.02em}
+.lede{font-size:clamp(18px,2.2vw,21px);color:var(--muted);max-width:62ch}
+.lede strong{color:var(--ink);font-weight:600}
+.tally{display:flex;flex-wrap:wrap;gap:12px 36px;padding-top:18px;border-top:1px solid var(--line)}
+.tally div{display:grid}
+.tally b{font-family:var(--display);font-size:30px;font-weight:700;font-variant-numeric:tabular-nums}
+.tally span{font-size:13px;color:var(--muted)}
+.links{display:flex;flex-wrap:wrap;gap:10px}
+.btn{font:500 14px var(--body);display:inline-flex;align-items:center;gap:8px;padding:9px 16px;border-radius:8px;border:1px solid var(--line);background:var(--surface);color:var(--ink);text-decoration:none;cursor:pointer}
+.btn.primary{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.btn:hover{border-color:var(--accent)}
 
-@keyframes gradientMove {
-    0% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
-}
+/* projects */
+.section-head{display:grid;gap:6px;margin-bottom:28px}
+.section-head h2{font-size:clamp(28px,4vw,38px);font-weight:700}
+.projects{display:grid;gap:80px}
+.case{display:grid;gap:22px}
+.case-head{display:grid;gap:10px}
+.case h3{font-size:clamp(24px,3.4vw,32px);font-weight:700}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{font-family:var(--mono);font-size:12px;background:var(--chip);padding:4px 10px;border-radius:6px;color:var(--ink)}
+.question{font-size:18px;max-width:65ch}
+.question em{font-style:normal;color:var(--muted)}
+.shots{display:grid;gap:14px}
+.shots.two{grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr))}
+figure{margin:0;display:grid;gap:8px;min-width:0}
+.shot{display:block;padding:0;border:1px solid var(--line);border-radius:10px;overflow:hidden;background:var(--surface);cursor:zoom-in;width:100%}
+.shot img{display:block;width:100%;height:auto}
+figcaption{font-size:13px;color:var(--muted)}
+.cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:28px}
+.cols > div{min-width:0;display:grid;gap:12px;align-content:start}
+ul.did{margin:0;padding-left:18px;display:grid;gap:8px}
+ul.did li::marker{color:var(--accent)}
+/* findings ledger */
+.ledger{display:grid;border-top:1px solid var(--line)}
+.row{display:grid;grid-template-columns:96px 1fr;gap:14px;padding:11px 0;border-bottom:1px solid var(--line);align-items:baseline}
+.row b{font-family:var(--mono);font-weight:500;font-size:18px;font-variant-numeric:tabular-nums;color:var(--accent)}
+.row.hot b{color:var(--signal)}
+.rec{background:var(--surface);border:1px solid var(--line);border-left:3px solid var(--signal);border-radius:8px;padding:14px 16px;font-size:15px}
+.rec .label{display:block;margin-bottom:4px}
 
-/* GLOW */
-.glow {
-    position: fixed;
-    width: 400px;
-    height: 400px;
-    background: radial-gradient(circle, #38bdf8, transparent);
-    top: 10%;
-    left: 50%;
-    transform: translateX(-50%);
-    filter: blur(120px);
-    opacity: 0.3;
-    z-index: -1;
-}
+/* skills & background */
+.grid2{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr));gap:20px 40px}
+.skill{display:grid;gap:4px;padding-block:12px;border-bottom:1px solid var(--line)}
+.skill h3{font-family:var(--body);font-size:15px;font-weight:600}
+.skill p{color:var(--muted);font-size:15px}
+footer{display:grid;gap:18px;padding-top:28px;border-top:1px solid var(--line)}
+footer h2{font-size:clamp(26px,4vw,34px)}
+.contact{display:grid;gap:8px;font-size:16px}
+.contact span{font-family:var(--mono);font-size:15px;user-select:all}
+.copied{font-size:13px;color:var(--accent);min-height:1.2em}
 
-/* NAVBAR */
-.navbar {
-    position: fixed;
-    top: 0;
-    width: 100%;
-    padding: 15px 10%;
-    display: flex;
-    justify-content: space-between;
-    background: rgba(255,255,255,0.05);
-    backdrop-filter: blur(15px);
-    border-bottom: 1px solid rgba(255,255,255,0.1);
-    z-index: 1000;
-}
-
-.navbar a {
-    color: #38bdf8;
-    text-decoration: none;
-    margin-left: 15px;
-}
-
-.navbar a:hover {
-  color:#22d3ee;
-  transform:translateY(-2px);
-}
-/* HERO */
-.hero {
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    padding-top: 60px;
-}
-
-.hero h1 {
-    font-size: 50px;
-}
-
-.hero span {
-    background: linear-gradient(90deg, #38bdf8, #22d3ee);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-}
-
-.hero p {
-    margin-top: 10px;
-    color: #94a3b8;
-}
-
-/* BUTTON */
-.btn {
-    margin-top: 15px;
-    padding: 12px 25px;
-    background: linear-gradient(90deg, #38bdf8, #22d3ee);
-    color: #020617;
-    border-radius: 30px;
-    text-decoration: none;
-    position: relative;
-    overflow: hidden;
-}
-
-.btn::before {
-    content: "";
-    position: absolute;
-    width: 200%;
-    height: 100%;
-    background: linear-gradient(120deg, transparent, rgba(255,255,255,0.5), transparent);
-    top: 0;
-    left: -100%;
-    transition: 0.5s;
-}
-
-.btn:hover::before {
-    left: 100%;
-}
-
-/* SECTION */
-section {
-    padding: 80px 10%;
-}
-
-/* CARDS */
-.card {
-    background: rgba(255,255,255,0.04);
-    backdrop-filter: blur(25px);
-    border-radius: 20px;
-    padding: 25px;
-    border: 1px solid rgba(255,255,255,0.08);
-    box-shadow: 0 10px 40px rgba(0,0,0,0.4);
-    transition: 0.4s;
-}
-
-.card:hover {
-    transform: translateY(-10px) scale(1.03);
-    box-shadow:0 20px 60px rgba(56,189,248,0.2):
-}
-
-/* PROJECTS */
-.projects {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 20px;
-}
-
-/* SKILLS */
-.skills {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-}
-
-.skill {
-    padding: 10px 15px;
-    border-radius: 25px;
-    background: rgba(56,189,248,0.2);
-    color: #38bdf8;
-    transition: 0.3s;
-}
-
-.skill:hover {
-    background: linear-gradient(90deg, #38bdf8, #22d3ee);
-    color: #020617;
-}
-
-/* ANIMATION */
-.hidden {
-    opacity: 0;
-    transform: translateY(40px);
-    transition: 1s;
-}
-
-.show {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-/* FOOTER */
-footer {
-    text-align: center;
-    padding: 20px;
-    color: #64748b;
-}
+dialog{border:none;padding:0;max-width:min(1400px,96vw);background:transparent}
+dialog::backdrop{background:rgba(8,12,20,.82)}
+dialog img{display:block;max-width:100%;max-height:88vh;border-radius:8px}
+dialog form{text-align:right;margin-bottom:8px}
+dialog button{font:500 14px var(--body);background:#fff;color:#132033;border:none;border-radius:6px;padding:6px 14px;cursor:pointer}
+@media (prefers-reduced-motion:no-preference){.shot img{transition:transform .3s}.shot:hover img{transform:scale(1.01)}}
+@media (max-width:480px){.row{grid-template-columns:76px 1fr}.row b{font-size:16px}}
 </style>
 </head>
-
 <body>
 
-<div class="glow"></div>
-
-<!-- NAVBAR -->
-<div class="navbar">
-    <div><strong>Sahal</strong></div>
-    <div>
-        <a href="#projects">Projects</a>
-        <a href="#contact">Contact</a>
+<div class="wrap">
+  <header>
+    <div class="topline">
+      <span class="label">Data Analyst · Kasaragod, Kerala, India</span>
+      <span class="status">Open to internships · available full-time</span>
     </div>
-</div>
-
-<!-- HERO -->
-<div class="hero">
-    <h1>Muhammed <span>Sahal</span> C</h1>
-    <p><strong>Data Analyst & MIS Executive</strong></p>
-    <p>Helping Business make data-driven decisions</p>
-    <p><strong>Open to Work | Immediate Joiner</strong></p>
-
-    <a href="#projects" class="btn">View My Work</a>
-
-    <div style="margin-top:25px; display:flex; gap:12px; justify-content:center; flex-wrap:wrap;">
-        <a href="mailto:sahalmuhammed564@gmail.com" class="btn">Hire Me</a>
-        <a href="YOUR_RESUME_LINK" class="btn">Resume</a>
+    <h1>Muhammed Sahal C</h1>
+    <p class="lede">I analyse <strong>e-commerce and retail data</strong> with <strong>Power BI, SQL and Excel</strong>, and turn it into dashboards that answer one business question at a time: where revenue comes from, where profit leaks, and why customers or employees leave.</p>
+    <div class="links">
+      <a class="btn primary" href="#projects">See the projects</a>
+      <a class="btn" href="https://www.linkedin.com/in/muhammedsahalc" target="_blank" rel="noopener">LinkedIn ↗</a>
+      <button class="btn" type="button" id="copyEmailTop">Copy email</button>
     </div>
-</div>
-
-<!-- ABOUT -->
-<section class="hidden">
-<h2>About Me</h2>
-<div class="card">
-<p>
-Data Analyst skilled in Excel, SQL, and Power BI with experience in dashboards and reporting.
-Focused on transforming raw data into actionable insights.
-</p>
-</div>
-</section>
-
-<!-- PROJECTS -->
-<section id="projects" class="hidden">
-<h2>Projects</h2>
-
-<div class="projects">
-
-<div class="card">
-    <h3>Sales Dashboard</h3>
-    <p>Analyzed sales trends and built dashboards for decision-making.</p>
-
-    <div style="margin-top:15px;">
-        <a href="#"class="btn">View Dashboard</a>
+    <div class="tally" aria-label="Portfolio at a glance">
+      <div><b>3</b><span>end-to-end projects</span></div>
+      <div><b>100K+</b><span>records analysed</span></div>
+      <div><b>5</b><span>dashboard pages</span></div>
+      <div><b>3</b><span>domains: e-commerce, retail, HR</span></div>
     </div>
-</div>  
+  </header>
 
-<div class="card">
-<h3>HR Analytics</h3>
-<p>Identified attrition patterns and employee insights.</p>
-<a href="#"class="btn">View Dashboard</a>
+  <main id="projects">
+    <div class="section-head">
+      <span class="label">Projects</span>
+      <h2>Case files</h2>
+    </div>
+
+    <div class="projects">
+      <!-- Olist -->
+      <article class="case" id="ecommerce">
+        <div class="case-head">
+          <div class="chips"><span class="chip">PostgreSQL</span><span class="chip">SQL</span><span class="chip">Power BI</span><span class="chip">99K orders</span></div>
+          <h3>E-Commerce Sales &amp; Delivery Analysis</h3>
+          <p class="question">How much does the store earn, where does the revenue come from, and which customers wait too long for their orders? <em>Real data from Olist, a Brazilian online marketplace, 2016–2018.</em></p>
+        </div>
+        <div class="shots two">
+          <figure><button class="shot" type="button" data-full="images/olist_sales_overview.png" data-alt="E-commerce sales overview dashboard"><img src="images/olist_sales_overview.png" alt="E-commerce sales overview dashboard: revenue trend, top categories and revenue by state" loading="lazy" width="1437" height="802"></button><figcaption>Page 1 · Sales overview</figcaption></figure>
+          <figure><button class="shot" type="button" data-full="images/olist_delivery_performance.png" data-alt="Delivery performance dashboard"><img src="images/olist_delivery_performance.png" alt="Delivery performance dashboard: late delivery rate and delivery days by state" loading="lazy" width="1437" height="803"></button><figcaption>Page 2 · Delivery performance</figcaption></figure>
+        </div>
+        <div class="cols">
+          <div>
+            <span class="label">What I did</span>
+            <ul class="did">
+              <li>Created 5 tables in PostgreSQL and imported 99K+ orders and 112K+ order items.</li>
+              <li>Wrote SQL with JOINs, GROUP BY, CASE WHEN and date functions to analyse revenue, categories, states and delivery times.</li>
+              <li>Built a SQL view joining all tables, with calculated delivery status and delivery days.</li>
+              <li>Connected Power BI to PostgreSQL and checked the dashboard totals matched the SQL results exactly.</li>
+            </ul>
+          </div>
+          <div>
+            <span class="label">Findings</span>
+            <div class="ledger">
+              <div class="row"><b>R$13.2M</b><span>revenue from 96K delivered orders, R$137 per order</span></div>
+              <div class="row"><b>38%</b><span>of revenue comes from São Paulo alone</span></div>
+              <div class="row hot"><b>8.1%</b><span>of orders arrive late, about 1 in 12</span></div>
+              <div class="row hot"><b>25+ days</b><span>wait in northern states, versus under 10 in São Paulo</span></div>
+            </div>
+            <p class="rec"><span class="label">Recommendation</span>Add delivery capacity for the north and northeast. Late deliveries spiked in Nov 2017 and peaked at about 21% in Mar 2018, so plan extra capacity for busy periods.</p>
+          </div>
+        </div>
+      </article>
+
+      <!-- Sales -->
+      <article class="case" id="retail">
+        <div class="case-head">
+          <div class="chips"><span class="chip">Excel</span><span class="chip">Power BI</span><span class="chip">DAX</span><span class="chip">9,994 orders</span></div>
+          <h3>Sales Performance &amp; Profit Analysis</h3>
+          <p class="question">The business sells well, so where is it losing money, and why? <em>Sample Superstore retail data, 2014–2017.</em></p>
+        </div>
+        <div class="shots two">
+          <figure><button class="shot" type="button" data-full="images/sales_overview.png" data-alt="Sales performance dashboard"><img src="images/sales_overview.png" alt="Sales performance dashboard: sales trend, category, region and segment" loading="lazy" width="1435" height="801"></button><figcaption>Page 1 · Sales overview</figcaption></figure>
+          <figure><button class="shot" type="button" data-full="images/profit_loss.png" data-alt="Profit and loss dashboard"><img src="images/profit_loss.png" alt="Profit and loss dashboard: profit by sub-category, discount band and region, top loss-making products" loading="lazy" width="1433" height="801"></button><figcaption>Page 2 · Profit &amp; loss</figcaption></figure>
+        </div>
+        <div class="cols">
+          <div>
+            <span class="label">What I did</span>
+            <ul class="did">
+              <li>Checked the data in Excel: blanks, duplicate rows and a pivot table to validate totals.</li>
+              <li>Built a date table and DAX measures for sales, profit, profit margin, orders and total loss.</li>
+              <li>Added discount bands to measure how discounts affect profit.</li>
+              <li>Used green and red conditional formatting so losses stand out at a glance.</li>
+            </ul>
+          </div>
+          <div>
+            <span class="label">Findings</span>
+            <div class="ledger">
+              <div class="row"><b>12.5%</b><span>profit margin on $2.3M sales and $286K profit</span></div>
+              <div class="row hot"><b>&gt;20%</b><span>discount turns orders from profit into loss</span></div>
+              <div class="row hot"><b>-77%</b><span>margin on orders discounted above 40%</span></div>
+              <div class="row hot"><b>$18K</b><span>profit from Furniture on $742K of sales</span></div>
+            </div>
+            <p class="rec"><span class="label">Recommendation</span>Cap discounts at 20% and review pricing for Tables and Bookcases, the biggest loss-makers.</p>
+          </div>
+        </div>
+      </article>
+
+      <!-- HR -->
+      <article class="case" id="hr">
+        <div class="case-head">
+          <div class="chips"><span class="chip">Power BI</span><span class="chip">DAX</span><span class="chip">1,470 employees</span></div>
+          <h3>HR Employee Attrition Analysis</h3>
+          <p class="question">Why do employees leave, and which groups are most at risk? <em>IBM HR Analytics dataset.</em></p>
+        </div>
+        <div class="shots">
+          <figure><button class="shot" type="button" data-full="images/hr_dashboard.png" data-alt="HR attrition dashboard"><img src="images/hr_dashboard.png" alt="HR attrition dashboard: attrition rate by department, role, age, salary, tenure and satisfaction" loading="lazy" width="1433" height="801"></button><figcaption>Attrition dashboard</figcaption></figure>
+        </div>
+        <div class="cols">
+          <div>
+            <span class="label">What I did</span>
+            <ul class="did">
+              <li>Grouped employees by age, tenure, salary and satisfaction with DAX calculated columns.</li>
+              <li>Compared attrition rates instead of raw counts, so groups of different sizes compare fairly.</li>
+              <li>Wrote each chart title as its finding, so the story reads in seconds.</li>
+            </ul>
+          </div>
+          <div>
+            <span class="label">Findings</span>
+            <div class="ledger">
+              <div class="row"><b>16.1%</b><span>overall attrition, 237 of 1,470 employees</span></div>
+              <div class="row hot"><b>~40%</b><span>of Sales Representatives leave, over double the average</span></div>
+              <div class="row hot"><b>36%</b><span>attrition among employees aged 18–25</span></div>
+              <div class="row hot"><b>35%</b><span>attrition in the first year at the company</span></div>
+            </div>
+            <p class="rec"><span class="label">Recommendation</span>Focus retention on young, new and lower-paid staff, especially in Sales, through onboarding and pay reviews.</p>
+          </div>
+        </div>
+      </article>
+    </div>
+  </main>
+
+  <section aria-labelledby="skills-h">
+    <div class="section-head">
+      <span class="label">Toolkit</span>
+      <h2 id="skills-h">Skills</h2>
+    </div>
+    <div class="grid2">
+      <div class="skill"><h3>Power BI</h3><p>Data modelling, relationships, DAX measures and calculated columns, date tables, Power Query, conditional formatting</p></div>
+      <div class="skill"><h3>SQL (PostgreSQL)</h3><p>JOINs, GROUP BY, HAVING, subqueries, CASE WHEN, date functions, views</p></div>
+      <div class="skill"><h3>Excel</h3><p>Pivot tables, XLOOKUP, data cleaning, duplicate removal, charts</p></div>
+      <div class="skill"><h3>Analytics</h3><p>KPI design, root-cause analysis, data storytelling, e-commerce and retail metrics</p></div>
+    </div>
+  </section>
+
+  <section aria-labelledby="bg-h">
+    <div class="section-head">
+      <span class="label">Background</span>
+      <h2 id="bg-h">Education</h2>
+    </div>
+    <div class="grid2">
+      <div class="skill"><h3>BCA – AI &amp; Data Science</h3><p>Yenepoya University (online) · 2nd year · graduating 2028</p></div>
+      <div class="skill"><h3>Google Data Analytics Certificate</h3><p>Google via Coursera</p></div>
+      <div class="skill"><h3>Data Analyst Course</h3><p>G-TEC Computer Education</p></div>
+      <div class="skill"><h3>Languages</h3><p>English, Malayalam, Hindi</p></div>
+    </div>
+  </section>
+
+  <footer>
+    <span class="label">Contact</span>
+    <h2>Looking for a data analyst intern?</h2>
+    <div class="contact">
+      <div>Email: <span id="email">sahalmuhammed564@gmail.com</span></div>
+      <div>Phone: <span>+91 9497880396</span></div>
+      <div>LinkedIn: <a href="https://www.linkedin.com/in/muhammedsahalc" target="_blank" rel="noopener">linkedin.com/in/muhammedsahalc</a></div>
+    </div>
+    <div class="links"><button class="btn primary" type="button" id="copyEmail">Copy email</button></div>
+    <p class="copied" id="copied" aria-live="polite"></p>
+  </footer>
 </div>
 
-
-</div>
-</section>
-
-<!-- SKILLS -->
-<section class="hidden">
-<h2>Skills</h2>
-
-<div class="skills">
-<div class="skill">Excel</div>
-<div class="skill">SQL</div>
-<div class="skill">Power BI</div>
-<div class="skill">Data Analysis</div>
-<div class="skill">Reporting</div>
-</div>
-</section>
-
-<!-- CONTACT -->
-<section id="contact" class="hidden">
-<h2>Contact</h2>
-
-<div class="card">
-<p>Email: <a href="mailto:sahalmuhammed564@gmail.com">sahalmuhammed564@gmail.com</a></p>
-<p>LinkedIn: <a href="https://linkedin.com/in/muhammed-sahal-c-x5767"target="_blank">Your Profile</a></p>
-</div>
-</section>
-
-<footer>
-<p>© 2026 Muhammed Sahal</p>
-</footer>
+<dialog id="viewer" aria-label="Dashboard screenshot">
+  <form method="dialog"><button type="submit">Close ✕</button></form>
+  <img id="viewerImg" src="" alt="">
+</dialog>
 
 <script>
-const observer = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-        if(entry.isIntersecting){
-            entry.target.classList.add('show');
-        }
+(function(){
+  var dlg=document.getElementById('viewer'), img=document.getElementById('viewerImg');
+  document.querySelectorAll('.shot').forEach(function(b){
+    b.addEventListener('click',function(){
+      img.src=b.dataset.full; img.alt=b.dataset.alt||'';
+      if(dlg.showModal){dlg.showModal();}
     });
-});
-document.querySelectorAll('.hidden').forEach(el => observer.observe(el));
+  });
+  dlg.addEventListener('click',function(e){ if(e.target===dlg) dlg.close(); });
+  var msg=document.getElementById('copied'), email='sahalmuhammed564@gmail.com';
+  function copy(){
+    function fallback(){
+      var r=document.createRange(); r.selectNodeContents(document.getElementById('email'));
+      var s=window.getSelection(); s.removeAllRanges(); s.addRange(r);
+      msg.textContent='Email selected. Press Ctrl + C to copy it.';
+    }
+    try{
+      navigator.clipboard.writeText(email).then(function(){msg.textContent='Email copied.';},fallback);
+    }catch(e){fallback();}
+  }
+  document.getElementById('copyEmail').addEventListener('click',copy);
+  document.getElementById('copyEmailTop').addEventListener('click',function(){
+    copy(); document.getElementById('copied').scrollIntoView({block:'center'});
+  });
+})();
 </script>
-
 </body>
 </html>
